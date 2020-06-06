@@ -189,6 +189,7 @@ public class WeatherActivity extends AppCompatActivity {
         String degree = weather.now.temperature + "℃";
         String weatherInfo = weather.now.more.info;
 
+
         titleCity.setText(cityName);
         titleUpdateTime.setText(updateTime);
         degreeText.setText(degree);
@@ -208,6 +209,9 @@ public class WeatherActivity extends AppCompatActivity {
             minText.setText(forecast.temperature.min);
 
             forecastLayout.addView(view);
+            Intent intent = new Intent(this, AutoUpdateService.class);
+            startService(intent);
+
         }
 
         if (weather.aqi != null){
@@ -225,7 +229,7 @@ public class WeatherActivity extends AppCompatActivity {
 
         weatherLayout.setVisibility(View.VISIBLE);
 
-        Intent intent = new Intent(this, AutoUpdateService.class);
-        startService(intent);
+
+
     }
 }
